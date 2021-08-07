@@ -1,14 +1,17 @@
-import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
+import {
+  BaseEntity, Column, Entity, ObjectID, ObjectIdColumn,
+} from 'typeorm';
 
 @Entity()
-export class Todo extends BaseEntity {
-
+class Todo extends BaseEntity {
   @ObjectIdColumn()
-  id!: ObjectID
+  id!: ObjectID;
 
   @Column()
   content!: string;
 
   @Column()
-  completed!: boolean
+  completed!: boolean;
 }
+
+export default Todo;

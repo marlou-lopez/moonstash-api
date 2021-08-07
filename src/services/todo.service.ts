@@ -1,18 +1,16 @@
-import { Service } from "typedi";
-import { ObjectID } from "typeorm";
-import { InjectRepository } from "typeorm-typedi-extensions";
-import { Todo } from "../models/todo.model";
-import { TodoRepository } from "../repositories/todo.repository";
+import { Service } from 'typedi';
+import { InjectRepository } from 'typeorm-typedi-extensions';
+import Todo from '../models/todo.model';
+import TodoRepository from '../repositories/todo.repository';
 
 @Service()
-export class TodoService {
-  
+class TodoService {
   @InjectRepository()
   private readonly todoRepository: TodoRepository;
 
   async getTodos(): Promise<Todo[]> {
     const todos = await this.todoRepository.findTodos();
-    
+
     return todos;
   }
 
@@ -24,7 +22,7 @@ export class TodoService {
 
   async getTotalTodos(): Promise<number> {
     const count = await this.todoRepository.findTotalTodos();
-    
+
     return count;
   }
 
@@ -34,3 +32,5 @@ export class TodoService {
     return todo;
   }
 }
+
+export default TodoService;
